@@ -23,10 +23,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear called!")
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
@@ -60,6 +59,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
     }
+    
+    // MARK: - Audio Recorder Delegate
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
