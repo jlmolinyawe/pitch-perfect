@@ -45,7 +45,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
-        
         configureUI(isRecording: false)
     }
     
@@ -54,8 +53,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
              performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
-        } else {
-            print("finished recording")
         }
     }
     
@@ -68,12 +65,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func configureUI(isRecording: Bool = false) {
-        if isRecording {
-            recordingLabel.text = "Recording in Progress!"
-        } else {
-            recordingLabel.text = "Tap to Record!"
-        }
-        
+        recordingLabel.text = isRecording ? "Recording in Progress!" : "Tap to Record!"
         recordButton.isEnabled = !isRecording
         stopRecordingButton.isEnabled = isRecording
     }
